@@ -13,24 +13,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><a href="#">Marcos Korbes Werle</a></td>
-      <td>T.I.</td>
-      <td>100</td>
-      <td><a href="mailto:marcoskorbeswerle@hotmail.com">marcoskorbeswerle@hotmail.com</a></td>
-    </tr>
-    <tr>
-      <td><a href="#">João da Silva</a></td>
-      <td>Recursos Humanos</td>
-      <td>110</td>
-      <td><a href="mailto:joao.silva@email.com">joao.silva@email.com</a></td>
-    </tr>
-    <tr>
-      <td><a href="#">José dos Santos</a></td>
-      <td>Financeiro</td>
-      <td>120</td>
-      <td><a href="mailto:jose.santos@email.com">jose.santos@email.com</a></td>
-    </tr>
+    {% for colaborador in colaboradores %}
+      <tr>
+        <td>
+          <a href="#">{{ colaborador.nome_completo }}</a>
+        </td>
+        <td>{{ colaborador.setor }}</td>
+        <td>{{ colaborador.ramal }}</td>
+        <td><a href="mailto:{{ colaborador.email }}">{{ colaborador.email }}</a></td>
+      </tr>
+    {% endfor %}
   </tbody>
 </table>
 

@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from .models import Colaborador
 
-# Create your views here.
 
 def index(request):
-    return render(request, 'colaboradores/index.html')
+    colaboradores = Colaborador.objects.all()
+
+    return render(request, 'colaboradores/index.html', {
+        'colaboradores': colaboradores
+    })
 
