@@ -3,10 +3,26 @@ from . models import Setor, Colaborador
 
 
 class ColaboradorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome_completo', 'setor', 'ramal', 'email')
-    list_display_links = ('id', 'nome_completo')
-    list_filter = ('setor', )
-    search_fields = ('nome_completo', 'setor', 'ramal', 'email', 'aniversario')
+    list_display = (
+        'id',
+        'nome_completo',
+        'setor',
+        'ramal',
+        'email',
+        'situacao',)
+    list_display_links = (
+        'id',
+        'nome_completo')
+    list_filter = (
+        'setor', )
+    list_editable = (
+        'situacao', )
+    search_fields = (
+        'nome_completo',
+        'setor',
+        'ramal',
+        'email',
+        'aniversario')
 
 
 class SetorAdmin(admin.ModelAdmin):
