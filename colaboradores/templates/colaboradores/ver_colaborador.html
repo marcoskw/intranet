@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <h1 class="mt-5">{{colaborador.nome_completo}}</h1>
+  <dl>
+    <dt>ID:</dt>
+    <dd>{{colaborador.id}}</dd>
+
+    <dt>Setor:</dt>
+    <dd>{{colaborador.setor}}</dd>
+
+    <dt>Ramal:</dt>
+    <dd>{{colaborador.ramal}}</dd>
+
+    <dt>E-mail:</dt>
+    <dd>{{colaborador.email}}</dd>
+
+    <dt>Data de Admissão:</dt>
+    <dd>{{colaborador.data_admissao|date:'d/m/Y'}}</dd>
+
+    <dt>Aniversário:</dt>
+    <dd>{{colaborador.aniversario}}</dd>
+
+    <dt>Descrição:</dt>
+    <dd>{{colaborador.descricao}}</dd>
+
+  </dl>
+{% endblock %}
