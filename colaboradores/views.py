@@ -4,7 +4,9 @@ from .models import Colaborador
 
 
 def index(request):
-    colaboradores = Colaborador.objects.all()
+    colaboradores = Colaborador.objects.order_by('nome_completo').filter(
+        situacao=True
+    )
 
     return render(request, 'colaboradores/index.html', {
         'colaboradores': colaboradores

@@ -14,7 +14,6 @@
   </thead>
   <tbody>
     {% for colaborador in colaboradores %}
-      {% if colaborador.situacao %}
         <tr>
           <td>
             <a href="{% url 'ver_colaborador' colaborador.id %}">{{ colaborador.nome_completo }}</a>
@@ -23,7 +22,6 @@
           <td>{{ colaborador.ramal }}</td>
           <td><a href="mailto:{{ colaborador.email }}">{{ colaborador.email }}</a></td>
         </tr>
-      {% endif %}
     {% endfor %}
   </tbody>
 </table>
