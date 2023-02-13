@@ -18,7 +18,7 @@ class Colaborador(models.Model):
     data_admissao = models.DateTimeField(default=timezone.now, blank=True)
     aniversario = models.CharField(max_length=5, blank=True)
     descricao = models.TextField(blank=True)
-    situacao = models.BooleanField(default=True)
+    situacao = models.BooleanField(default=True, verbose_name="Ativo")
 
     def __str__(self):
         return self.nome_completo
