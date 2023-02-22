@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from .models import Colaborador
+from django.db.models import Q
 
 
 def index(request):
@@ -23,3 +24,17 @@ def ver_colaborador(request, colaborador_id):
         'colaborador': colaborador
     })
 
+
+def busca(request):
+    termo = request.GET.get('termo')
+
+    if termo is None:
+        raise Http404()
+
+    colaboradores = Colaborador.objects.order_by('nome_completo').filter(
+        Q(nome_completo__icontains=termo)
+    )
+
+    return render(request, 'colaboradores/busca.html', {
+        'colaboradores': colaboradores
+    })
