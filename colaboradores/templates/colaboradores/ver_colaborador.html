@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
 
 {% block conteudo %}
-  <h1 class="mt-5">{{colaborador.nome_completo}}</h1>
-  <dl>
-    <dt>ID:</dt>
-    <dd>{{colaborador.id}}</dd>
+<h1>{{colaborador.nome_completo}}</h1>
 
-    <dt>Setor:</dt>
-    <dd>{{colaborador.setor}}</dd>
+  {% if colaborador.avatar %}
+    <p>
+      <img src="{{colaborador.avatar.url}}" style="max-width=250px; height: auto; border: 1px solid black">
+    </p>
+  {% endif %}
 
-    <dt>Ramal:</dt>
-    <dd>{{colaborador.ramal}}</dd>
+<dl>
+  <dt>Cargo:</dt>
+  <dd>{{colaborador.cargo}}</dd>
 
-    <dt>E-mail:</dt>
-    <dd>{{colaborador.email}}</dd>
+  <dt>Setor:</dt>
+  <dd>{{colaborador.setor}}</dd>
 
-    <dt>Data de Admissão:</dt>
-    <dd>{{colaborador.data_admissao|date:'d/m/Y'}}</dd>
+  <dt>Ramal:</dt>
+  <dd>{{colaborador.ramal}}</dd>
 
-    <dt>Aniversário:</dt>
-    <dd>{{colaborador.aniversario}}</dd>
+  <dt>E-mail:</dt>
+  <dd>{{colaborador.email}}</dd>
 
-    <dt>Descrição:</dt>
-    <dd>{{colaborador.descricao}}</dd>
+  <dt>Data de Admissão:</dt>
+  <dd>{{colaborador.data_admissao|date:'d/m/Y'}}</dd>
 
-  </dl>
+  <dt>Aniversário:</dt>
+  <dd>{{colaborador.aniversario}}</dd>
+
+  <dt>Descrição:</dt>
+  <dd>{{colaborador.descricao}}</dd>
+
+</dl>
+
 {% endblock %}
