@@ -6,6 +6,7 @@ class ColaboradorAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'nome_completo',
+        'cargo',
         'setor',
         'ramal',
         'email',

@@ -11,6 +11,7 @@ class Setor(models.Model):
 
 class Colaborador(models.Model):
     nome_completo = models.CharField(max_length=255)
+    cargo = models.CharField(max_length=255,  blank=True)
     setor = models.ForeignKey(Setor, on_delete=models.DO_NOTHING)
     ramal = models.CharField(max_length=255, blank=True)
     email = models.CharField(max_length=255, blank=True)
@@ -19,7 +20,7 @@ class Colaborador(models.Model):
     aniversario = models.CharField(max_length=5, blank=True)
     descricao = models.TextField(blank=True)
     situacao = models.BooleanField(default=True, verbose_name="Ativo")
+    avatar = models.ImageField(blank=True, upload_to='avatar/')
 
     def __str__(self):
         return self.nome_completo
-
