@@ -1,7 +1,8 @@
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Colaborador
 from django.db.models import Q
+from django.contrib import messages
 
 
 def index(request):
@@ -28,8 +29,9 @@ def ver_colaborador(request, colaborador_id):
 def busca(request):
     termo = request.GET.get('termo')
 
-    if termo is None:
-        raise Http404()
+    if termo is None or not termo:
+        messages.add_message(request, messages.WARNING, 'O campo de pesquisa não pode estar vazio para consulta.')
+        return redirect('index')
 
     colaboradores = Colaborador.objects.order_by('nome_completo').filter(
         Q(nome_completo__icontains=termo)
