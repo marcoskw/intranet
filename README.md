@@ -20,6 +20,7 @@ DADOS DE LOGIN DO SUPERUSER:
     sudo apt install nginx 
     sudo apt install curl
     sudo apt install git
+    sudo apt install django-summernote
 
 # Atualizando pip e demais
     python3 -m pip install --upgrade pip setuptools wheel --user
@@ -125,3 +126,4 @@ DADOS DE LOGIN DO SUPERUSER:
 
 # cent-os
     sudo usermod -a -G "*****usuario*****" nginx
+
