@@ -35,7 +35,7 @@ DADOS DE LOGIN DO SUPERUSER:
 # Criando o ambiente virtual
     python3 -m venv venv
     source venv/bin/activate
-    python3 -m pip install django gunicorn pillow
+    python3 -m pip install django gunicorn pillow python-decouple
     chmod -R 777 intranet/.
 # atenção para as permissoes que você der... (estou em servidor teste)    
     python manage.py makemigrations
