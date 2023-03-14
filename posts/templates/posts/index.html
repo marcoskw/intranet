@@ -26,7 +26,7 @@
                         <p class="card-text">
                             <small class="text-muted">
                                 {{ post.data_post|naturalday|title}} |
-                                {{ post.comentario_set.count}} comentário(s) |
+                                {{ post.numero_comentarios }} comentário(s) |
                                 {{ post.categoria_post}}</small>
                         </p>
 
@@ -38,10 +38,33 @@
                 {% endfor %}
             </div>
             <!--/CONTENT-->
-
         </div>
     </div>
 </div>
 
 {% include 'parciais/_pagination.html' %}
+
+<div class="row border p-2">
+    <fieldset>
+       <legend>Consulta por Termo ou Categoria:</legend>
+        <form action="{% url 'post_busca' %}">
+            <input name="termo" value="{{ request.GET.termo }}" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
+               aria-label="Search">
+        </form><br>
+        <a href="{% url 'post_categoria' 'TI' %}" class="btn btn-outline-secondary">TI</a>
+        <a href="{% url 'post_categoria' 'RH' %}" class="btn btn-outline-secondary">RH</a>
+        <a href="{% url 'post_categoria' 'CIPA' %}" class="btn btn-outline-secondary">CIPA</a>
+        <a href="{% url 'post_categoria' 'NOVO(A) COLABORADOR(A)' %}" class="btn btn-outline-secondary">NOVO(A) COLABORADOR(A)</a>
+        <a href="{% url 'post_categoria' 'AVISOS EXTERNOS' %}" class="btn btn-outline-secondary">AVISOS EXTERNOS</a>
+        <a href="{% url 'post_categoria' 'AVISOS INTERNOS' %}" class="btn btn-outline-secondary">AVISOS INTERNOS</a>
+        <a href="{% url 'post_categoria' 'SAUDE' %}" class="btn btn-outline-secondary">SAUDE</a>
+        <a href="{% url 'post_categoria' 'DATAS COMEMORATIVAS' %}" class="btn btn-outline-secondary">DATAS COMEMORATIVAS</a>
+        <a href="{% url 'post_categoria' 'MARKETING' %}" class="btn btn-outline-secondary">MARKETING</a>
+        <a href="{% url 'post_categoria' 'QUALIDADE' %}" class="btn btn-outline-secondary">QUALIDADE</a>
+        <a href="{% url 'post_categoria' 'PAGAMENTO' %}" class="btn btn-outline-secondary">PAGAMENTO</a>
+        <a href="{% url 'post_categoria' 'CURIOSIDADES' %}" class="btn btn-outline-secondary">CURIOSIDADES</a>
+        <a href="{% url 'post_categoria' 'BEM ESTAR' %}" class="btn btn-outline-secondary">BEM ESTAR</a>
+    </fieldset>
+</div>
+
 {% endblock %}
