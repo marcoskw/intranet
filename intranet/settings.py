@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'colaboradores.apps.ColaboradoresConfig',
+    'denuncia.apps.DenunciaConfig',
     'django.contrib.humanize',
     'django_summernote',
 ]

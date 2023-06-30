@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+<br>
+{%block conteudo%}
+
+<br><br>
+<div class="row">
+  <div class="col-7 col-lg-10 text-center"><h1 class="h1 text-center d-inline">Canal de Denúncia<br><i>Fazendo sua voz ser ouvida</i></h1></div>
+  <div class="col-5 col-lg-2"><img src="..\media\selo-ativo.png"></div>
+<!--  <div class="col-4 text-center bg-success border border-secondary rounded-circle"><h2 class="h3 d-inline text-white">✔ <br>Este canal está ativo!<br></h2><br> </div> -->
+</div>
+
+<div class="row">
+   <div class="col-7 col-lg-10 text-center"></div>
+   <div class="col-5 col-lg-2 text-center">
+      <p class="h5 text-end "><script>date = new Date().toLocaleDateString(); document.write(date);</script></p>
+   </div>
+</div>
+<br><br>
+<p class="h5 text-center"><i>Junte-se a nós no combate a abusos, fraudes, corrupção, discriminação, assédio e outras violações de
+  direitos. <br>Faça sua parte para tornar o mundo um lugar melhor e mais justo. <br>Use nosso Canal de Denúncia para fazer
+  sua voz ser ouvida.</i></p>
+<br><br>
+<p class="h3 ">O que é?</p>
+<p>Nós, do Canal de Denúncia, estamos aqui para ajudar você a fazer sua voz ser ouvida. Sabemos que há situações em
+  que é difícil ou até mesmo assustador falar sobre abusos, fraudes, corrupção, discriminação, assédio ou outras
+  questões sensíveis. É por isso que criamos um espaço seguro e confidencial onde você pode denunciar anonimamente.
+   <br> <br>
+  Acreditamos que a justiça e a integridade são valores fundamentais em uma sociedade saudável. Quando você denuncia
+  uma irregularidade ou injustiça, está contribuindo para a promoção de um ambiente mais justo e ético. Nós entendemos
+  que denunciar pode ser intimidador, mas estamos aqui para te apoiar em todo o processo.</p>
+
+<p class="h3 ">Como funciona?</p>
+<p>Ao usar nosso Canal de Denúncia, você pode ter a certeza de que suas informações serão tratadas com a devida
+  confidencialidade. Nós protegeremos sua identidade e garantiremos que seu relato seja encaminhado para as autoridades
+  apropriadas para investigação e ação corretiva.
+<br><br>
+  Nossa equipe é composta por profissionais experientes e dedicados, que estão comprometidos em lidar com suas
+  denúncias com seriedade e respeito. Valorizamos a coragem e a integridade daqueles que se levantam para denunciar
+  irregularidades e estamos aqui para apoiá-los em cada passo do caminho.
+</p>
+
+<p class="h3 ">Como a sua denúncia é tratada?</p>
+<p>Após ser recebida através do Canal
+    de Denúncia, a denúncia será analisada pelo Comitê composto pela Diretoria da Empresa.
+  É importante que as informações fornecidas permitam a investigação da ocorrência. Por isso, é crucial que a
+  denúncia seja detalhada e clara, descrevendo a irregularidade, a área onde ela ocorreu ou está ocorrendo, o
+  responsável (autor), o período de tempo em que aconteceu ou está acontecendo, e o nome de pessoas que possam
+  contribuir com informações adicionais.<br>
+  Se a denúncia contiver uma descrição completa dos fatos reportados, ela será encaminhada para o Comitê de Ética
+  Interno, responsável pela investigação. Durante a apuração, pessoas envolvidas, como o autor da denúncia,
+  testemunhas, equipe de investigação, gestores e profissionais relacionados ao processo, podem ser ouvidas.
+  Informações pessoais e sensíveis serão mantidas pelo período necessário para lidar com a denúncia e cumprir quaisquer
+  obrigações legais, contratuais, de contabilidade ou requisitos de autoridades apropriadas.
+  <br><br>
+  <b>PROTEÇÃO AO DENUNCIANTE:</b> A proteção da identidade e o anonimato dos denunciantes são elementos cruciais em
+  qualquer processo de tratamento de denúncias. Garantir que os denunciantes possam relatar suas preocupações sem temer
+  retaliações é fundamental para incentivar a divulgação de informações importantes e promover um ambiente seguro para
+  relatos de irregularidades. A confidencialidade e o anonimato devem ser cuidadosamente mantidos durante todo o
+  processo de tratamento de uma denúncia, seguindo as melhores práticas e as obrigações legais aplicáveis.
+</p>
+
+<form method="POST" action="{% url 'denuncia' %}">
+  {% csrf_token %}
+
+  <div class="form-group">
+
+    <label><b>Nome Completo:</b></label>
+    <input type="text" class="form-control"  placeholder="*** Campo Opcional *** (O retorno da denúncia será possível caso haja identificação do denunciante)" name="nome_completo" value="{{request.POST.nome_completo}}">
+    <p><i>O anonimato é garantido! Já que não há compartilhamento dos IPs dos computadores ou dispositivos móveis dos denunciantes ou rastreamento.
+    Se você optar pelo anonimato, não forneça no relato detalhes que possam revelar a sua identidade.</i></p>
+    <br>
+
+    <label><b>Indique o seu setor:</b></label>
+    <input type="text" class="form-control"  placeholder="*** Campo Opcional ***" name="setor_colaborador" value="{{request.POST.setor_colaborador}}">
+
+    <br>
+
+    <label><b>Que tipo de denúncia melhor se enquadra ao fato que você está registrando:</b></label>
+    <select class="form-control" name="tipo_denuncia">
+      <option value="default">[selecione]</option>
+      <option value="Assédio Sexual">Assédio Sexual</option>
+      <option value="Assédio Moral">Assédio Moral</option>
+      <option value="Agressão Física">Agressão Física</option>
+      <option value="Agressão Verbal">Agressão Verbal</option>
+      <option value="Discriminação">Discriminação</option>
+      <option value="Comportamento inadequado">Comportamento inadequado</option>
+      <option value="Não cumprimento de Políticas, Código de Conduta e Procedimentos Internos">Não cumprimento de Políticas, Código de Conduta e Procedimentos Internos</option>
+      <option value="Conflito de interesses">Conflito de interesses</option>
+      <option value="Violação de Leis Trabalhistas">Violação de Leis Trabalhistas</option>
+      <option value="Violação de Leis Ambientais">Violação de Leis Ambientais</option>
+      <option value="Violação de Leis Tributárias">Violação de Leis Tributárias</option>
+      <option value="Favorecimento de fornecedores, Prestadores de Serviço ou Clientes">Favorecimento de fornecedores, Prestadores de Serviço ou Clientes</option>
+      <option value="Fraude ou roubo">Fraude ou roubo</option>
+      <option value="Irregularidades nas demonstrações financeiras ou relatórios de gestão">Irregularidades nas demonstrações financeiras ou relatórios de gestão</option>
+      <option value="Destruição ou danos a bens da empresa">Destruição ou danos a bens da empresa</option>
+      <option value="Corrupção ou suborno">Corrupção ou suborno</option>
+      <option value="Ameaça ou coação">Ameaça ou coação</option>
+      <option value="Importunação à privacidade e/ou tranquilidade">Importunação à privacidade e/ou tranquilidade</option>
+      <option value="Vazamento ou uso indevido de informações">Vazamento ou uso indevido de informações</option>
+      <option value="Segurança no trabalho ou de instalações">Segurança no trabalho ou de instalações</option>
+      <option value="Trabalho escravo ou condições análogas">Trabalho escravo ou condições análogas</option>
+      <option value="Trabalho infantil">Trabalho infantil</option>
+      <option value="Interferência na vida privada (pessoal)">Interferência na vida privada (pessoal)</option>
+      <option value="Uso indevido da imagem na empresa">Uso indevido da imagem na empresa</option>
+      <option value="Outro">Outro</option>
+    </select>
+
+    <br>
+
+    <label ><b>Indique o local onde ocorreu o fato que você está denunciando:</b></label>
+    <select class="form-control" name="local_ocorrido">
+      <option value="Interno">Interno</option>
+      <option value="Externo">Externo</option>
+      <option value="Externo">Internet</option>
+    </select>
+
+    <br>
+
+    <label ><b>Indique o setor onde ocorreu:</b></label>
+    <input type="text" class="form-control" placeholder="Você pode citar mais de um setor se caso necessário" name="setor_ocorrido" value="{{request.POST.setor_ocorrido}}">
+    <br>
+
+    <label ><b>Como tomou conhecimento deste fato/transgressão?</b></label>
+    <select class="form-control" name="conhecimento">
+      <option value="Aconteceu comigo">Aconteceu comigo</option>
+      <option value="Eu a observei">Eu a observei</option>
+      <option value="Ouvi falar">Ouvi falar</option>
+      <option value="Um colega de trabalho me contou">Um colega de trabalho me contou</option>
+      <option value="O denunciado me contou">O denunciado me contou</option>
+      <option value="Ouvi por acaso">Ouvi por acaso</option>
+      <option value="Encontrei um documento ou arquivo acidentalmente">Encontrei um documento ou arquivo acidentalmente</option>
+      <option value="Outro">Outro</option>
+    </select>
+
+    <br>
+
+    <label ><b>Você sabe se tem Diretor(es), Gestor(s), Coordenador(es), Supervisor(es) e/outros Colaborador(es) ENVOLVIDO(S):</b></label>
+    <input type="text" class="form-control" placeholder="Insira o(s) nome(s) aqui" name="vinculo_superior" value="{{request.POST.vinculo_superior}}">
+    <label>
+       <i>(Apesar de não se envolver diretamente, algumas pessoas podem propositadamente ter ignorado o problema,
+      ou ter se comprometido a fazer algo, ou ter afirmado que não era um problema, ou ter alterado evidências).</i>
+    </label>
+
+    <br>
+
+    <label ><b>O que você quer denunciar?</b></label>
+    <textarea class="form-control"
+              rows="5"
+              name="denuncia"
+              placeholder="(Descreva o mais detalhadamente possível o que aconteceu, indicando o nome(s) da(s) pessoa(s) que está(ão) envolvida(s), bem como quando o fato ocorreu e se ainda continua ocorrendo)."
+              value="{{request.POST.denuncia}}">{{request.POST.corpo_denuncia}}</textarea>
+
+    <br>
+
+    <label ><b>Existem testemunhas? Em caso positivo, indique-as.</b></label>
+    <input type="text" class="form-control"  placeholder="" name="testemunhas" value="{{request.POST.testemunhas}}">
+
+    <br>
+
+    <label><b>Você sabe se existem evidências sobre o fato? Em caso positivo, indique-as.</b></label>
+    <input type="text" class="form-control" placeholder="" name="evidencias" value="{{request.POST.evidencias}}">
+    <p> <i>(Quais e em que lugar(es) podem ser encontradas evidências sobre o fato denunciado? Existem documentos que
+      comprovam esse fato? Em caso positivo, onde podem ser encontrados? Especifique da forma mais detalhada possível.
+      Lembre-se: qualquer informação pode ser útil, por mais irrelevante que ela pareça para você.</i> <br>
+      ATENÇÃO: NÃO REMOVA OU TOME CONTATO COM QUALQUER EVIDÊNCIA OU PROVA, POIS A INVESTIGAÇÃO PODE SER PREJUDICADA).</p>
+
+    <br>
+    <label ><b>Caso você tenha alguma sugestão de como solucionar o problema, descreva-a:</b> </label>
+    <textarea class="form-control"  rows="5" name="sugestao_solucao" value="{{request.POST.sugestao_solucao}}">{{request.POST.sugestao_solucao}}</textarea>
+    <br>
+
+    <br>
+    <h4 class="h4" style="color: red">Leia com atenção:</h4>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="1"  name="ciencia_veracidade">
+      <label class="form-check-label" ><b>Declaro ter lido e compreendido que a prática de denúncia falsa constitui um crime passível de sanções legais, as quais podem ser significativas. Comprometo-me, a agir com responsabilidade e honestidade ao fazer uma denúncia.</b></label>
+      <br><br>
+      <input class="form-check-input" type="checkbox" value="1"  name="ciencia_acao_judicial">
+      <label class="form-check-label" ><b>Concordo que, em caso de ação judicial, as informações fornecidas na minha denúncia poderão ser compartilhadas com as autoridades competentes.</b></label>
+    </div>
+
+    <br>
+
+    {% include 'parciais/_messages.html'%}
+
+    <button type="submit" class="btn btn-primary">Enviar Denúncia</button>
+
+  </div>
+</form>
+<br><br><br>
+
+<div class="col-5 col-lg-2"><img src="..\media\selo-conformidade.png"></div>
+{%endblock%}
